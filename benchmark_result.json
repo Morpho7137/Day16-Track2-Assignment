@@ -1,0 +1,23 @@
+{
+  "dataset": "mlg-ulb/creditcardfraud",
+  "csv_path": "/home/ec2-user/ml-benchmark/creditcard.csv",
+  "rows": 284807,
+  "columns": 31,
+  "train_rows": 227845,
+  "test_rows": 56962,
+  "load_time_seconds": 1.618363,
+  "train_time_seconds": 1.451148,
+  "best_iteration": 49,
+  "metrics": {
+    "auc_roc": 0.975398605911132,
+    "accuracy": 0.9949088866261718,
+    "f1_score": 0.3776824034334764,
+    "precision": 0.2391304347826087,
+    "recall": 0.8979591836734694
+  },
+  "inference": {
+    "single_row_latency_ms": 0.969592,
+    "throughput_rows_per_sec": 669118.763895,
+    "throughput_batch_size": 1000
+  }
+}

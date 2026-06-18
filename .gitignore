@@ -16,7 +16,14 @@ terraform.rc
 # SSH Keys
 lab-key
 lab-key.pub
+lab-key.pem
+aws_key.txt
+kaggle.json
+kaggle_api.txt
 
 # Environment Variables
 .env
 .env.local
+
+# Benchmark outputs
+__pycache__/
