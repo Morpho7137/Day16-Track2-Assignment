@@ -1,10 +1,10 @@
-# Bao cao ngan Section 7.8
+# Short Report for Section 7.8
 
-Toi su dung phuong an CPU + LightGBM tren AWS do ban dau tai khoan gap han che voi huong GPU, sau do benchmark duoc chay thanh cong tren instance `r5.2xlarge`.
-Bo du lieu su dung la `mlg-ulb/creditcardfraud` voi 284,807 dong du lieu va 31 cot, phu hop de danh gia bai toan phat hien gian lan giao dich.
-Thoi gian load data dat `1.618363` giay, trong khi thoi gian training chi `1.451148` giay, cho thay CPU du manh de xu ly gradient boosting nhanh voi bo du lieu nay.
-Mo hinh dat `AUC-ROC = 0.975399` va `Accuracy = 0.994909`, cho thay kha nang phan biet mau gian lan va binh thuong o muc tot.
-Chi so `Recall = 0.897959` kha cao, nghia la mo hinh bat duoc phan lon giao dich gian lan, nhung `Precision = 0.239130` va `F1-score = 0.377682` cho thay van con nhieu du doan duong tinh gia.
-Ve suy luan, do tre cho 1 dong du lieu la `0.969592 ms`, va throughput cho lo 1000 dong dat `669118.763895 rows/sec`, the hien toc do inference rat nhanh tren CPU.
-So voi phuong an GPU, cach lam nay khong phu hop cho LLM inference nhung lai hop ly voi bai toan tabular machine learning, vi LightGBM khong can GPU de dat hieu nang tot.
-Ly do phai dung CPU thay GPU la yeu cau quota GPU tren AWS de bi gioi han hoac kho duyet, trong khi `r5.2xlarge` co san va dap ung duoc muc tieu training, inference, va benchmarking cua bai lab.
+I used the CPU + LightGBM fallback approach on AWS because the original GPU path was restricted by account quota and approval limits, and the benchmark was later completed successfully on an `r5.2xlarge` instance.
+The dataset used was `mlg-ulb/creditcardfraud`, which contains 284,807 rows and 31 columns, making it suitable for a practical fraud detection benchmark.
+The data loading time was `1.618363` seconds, while the total training time was only `1.451148` seconds, showing that the CPU instance was strong enough for gradient boosting on this dataset.
+The model achieved `AUC-ROC = 0.975399` and `Accuracy = 0.994909`, which indicates strong overall classification performance.
+The `Recall = 0.897959` value is relatively high, meaning the model detected most fraudulent transactions, although `Precision = 0.239130` and `F1-score = 0.377682` show that false positives were still present.
+For inference performance, the latency for a single row was `0.969592 ms`, and the throughput for a batch of 1000 rows reached `669118.763895 rows/sec`, which is very fast for CPU inference.
+Compared with the GPU option, this CPU-based solution is not intended for LLM serving, but it is appropriate for tabular machine learning because LightGBM does not require GPU acceleration to perform well.
+The reason for using CPU instead of GPU was that GPU quota on AWS was initially limited or difficult to approve, while `r5.2xlarge` was available and sufficient to meet the lab objectives for training, inference, and benchmarking.
